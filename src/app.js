@@ -4,12 +4,15 @@ const geocode = require("./utils/geocode")
 const forecast = require("./utils/weather")
 var app = express()
 
+const router = express.Router()
+
 const port = process.env.PORT || 3000
+var ogrenciJSON = require(test.json);
 
 app.get("/", (req, res) => {
-    res.send("<h1> url'de istenilensehir kismina istediginiz sehri giriniz. </h1> /n <p> Oyku Parlak </p>")
+    res.send("<h1> url'de istenilen sehir kismina istediginiz sehri giriniz. </h1> /n <p> Oyku Parlak </p>")
 })
-
+//denemeee
 
 app.get("/weather/:sehir", (req, res) => {
 
@@ -30,7 +33,7 @@ app.get("/weather/:sehir", (req, res) => {
                     const sicaklik = data.current.temperature
                     const desc = data.current.weather_descriptions[0]
 
-                    return res.send({ konum, zaman, saat, sicaklik, desc })
+                    return res.send({ location, zaman, saat, sicaklik, desc })
                     
                 }
             })
@@ -38,6 +41,18 @@ app.get("/weather/:sehir", (req, res) => {
 
     })
 })
+
+router.get('/test', (req, res, next) => {
+    console.log(req.params)
+    res.render('test')
+  })
+
+var string = JSON.parse(ogrenciJSON);
+console.log("Bilgilerim")
+string.forEach(item =>{
+  console.log("ad soyad: "+item.adSoyad+", numara: "+item.model);
+})
+
 
 app.get("")
 app.listen(port, () => {
