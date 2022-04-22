@@ -28,10 +28,3 @@ module.exports = {
 
 }
 
-
-
-module.exports = {
-    test_geocode : test_geocode,
-    test_text : test_text
-
-}
